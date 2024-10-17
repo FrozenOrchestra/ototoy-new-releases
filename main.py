@@ -14,17 +14,20 @@ from new_release import NewRelease
 # gets number of days since last time script ran
 def get_script_delta():
     last_line = ''
-    with open('log', 'rb') as f:
-        try:  # catch OSError in case of a one line file 
-            f.seek(-2, os.SEEK_END)
-            while f.read(1) != b'\n':
-                f.seek(-2, os.SEEK_CUR)
-        except OSError:
-            f.seek(0)
-        last_line = f.readline().decode()
-    ld = last_line.split(",")[0].split("-")
-    last_date = datetime.date(int(ld[0]), int(ld[1]), int(ld[2]))
-    return (datetime.date.today() - last_date).days - 1
+    try:
+        with open('log', 'rb') as f:
+            try:  # catch OSError in case of a one line file 
+                f.seek(-2, os.SEEK_END)
+                while f.read(1) != b'\n':
+                    f.seek(-2, os.SEEK_CUR)
+            except OSError:
+                f.seek(0)
+            last_line = f.readline().decode()
+        ld = last_line.split(",")[0].split("-")
+        last_date = datetime.date(int(ld[0]), int(ld[1]), int(ld[2]))
+        return (datetime.date.today() - last_date).days - 1
+    except:
+        return 1
     
 
 # gets the new music releases for any given date
