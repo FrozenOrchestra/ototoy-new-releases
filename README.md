@@ -1,6 +1,6 @@
 # OTOTOY New Releases
 
-Mails a list of new releases from OTOTOY based on artists you listen to
+Mails a list of new releases from OTOTOY based on artists you listen to.
 
 ## How to set-up
 - Change details in "email_detail.json" to your sender and receiver mail addresses.
