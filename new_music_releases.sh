@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /home/*/Music/Music/ |
+ls /home/*/Music/music/ |
     sed 's/ - .*//' |
     sort -u |
     jq -Rrsc 'split("\n") | "\(.)"' |
